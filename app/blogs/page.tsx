@@ -17,11 +17,6 @@ export default function BlogsPage() {
       href: "/blogs/nextjs-performance",
       date: "Aug 25, 2024",
     },
-    {
-      title: "Designing with Redis: Patterns and Anti-patterns",
-      href: "/blogs/redis-design-patterns",
-      date: "Aug 19, 2024",
-    },
   ];
 
   return (
