@@ -5,20 +5,25 @@ import Link from "next/link";
 export default function HomePage() {
   const blogPosts = [
     {
-      title: "The URL is a great place to store state in React",
+      title: "Getting Productive with Spring Boot: Practical Guide",
+      slug: "intro-to-springboot",
       date: "Mar 11, 2025",
+      excerpt:
+        "A concise, practical guide to structuring Spring Boot apps for speed and maintainability.",
     },
     {
-      title: "React Design Patterns: Instance Hook Pattern",
+      title: "Advanced Go Concurrency Patterns",
+      slug: "advanced-go-concurrency",
       date: "Sep 15, 2024",
+      excerpt:
+        "Real-world concurrency patterns and pitfalls when building high-throughput Go services.",
     },
     {
-      title: "Typesafe Routing with React-Router: Advanced TypeScript",
+      title: "Next.js Performance: From Good to Great",
+      slug: "nextjs-performance",
       date: "Aug 25, 2024",
-    },
-    {
-      title: "5 Essential Developer Tools for an Optimized Workflow",
-      date: "Aug 19, 2024",
+      excerpt:
+        "Tactics to squeeze milliseconds out of your Next.js apps — image, cache, and render strategies.",
     },
   ];
 
@@ -96,22 +101,25 @@ export default function HomePage() {
         <div className="mb-12">
           <h2 className="text-xl font-medium mb-6">Blog</h2>
           <div className="space-y-3">
-            {blogPosts.map((post, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-4 bg-gray-900/50 rounded-lg hover:bg-gray-900/70 cursor-pointer group transition-colors"
+            {blogPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blogs/${post.slug}`}
+                className="block p-4 bg-gray-900/50 rounded-lg hover:bg-gray-900/70 transition-colors"
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-300 group-hover:text-white transition-colors">
-                    {post.title}
-                  </span>
-                  <ExternalLink
-                    size={14}
-                    className="text-gray-500 group-hover:text-gray-300 transition-colors"
-                  />
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-gray-100 font-medium">{post.title}</h3>
+                    <p className="text-gray-400 text-sm mt-1">{post.excerpt}</p>
+                  </div>
+                  <div className="flex items-center text-right ml-4">
+                    <ExternalLink size={16} className="text-gray-500 mt-1" />
+                    <div className="text-gray-500 text-sm mt-2">
+                      {post.date}
+                    </div>
+                  </div>
                 </div>
-                <span className="text-gray-500 text-sm">{post.date}</span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
